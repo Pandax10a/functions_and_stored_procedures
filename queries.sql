@@ -51,3 +51,14 @@ order by p.purchase_time desc
 limit 5;
 
 call five_recent_purchases (5);
+
+select c.username, count(p.customer_id)
+from purchase p inner join customer c on p.customer_id=c.id 
+group by p.customer_id ;
+
+
+call customer_purchases (1);
+
+call customer_purchases (2);
+
+call customer_purchases (3);
