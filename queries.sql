@@ -18,3 +18,36 @@ values
 ('mog tropical pineapple defeat battle', '24.60'),
 ('claim differdange', '13.00'),
 ('potion', '12.00');
+
+
+insert into purchase(customer_id, item_id, purchase_time)
+values
+('1', '1', '2022-3-1 12:00'),
+('1', '2', '2022-3-1 12:00'),
+('1', '3', '2022-3-1 12:00'),
+('1', '4', '2022-3-1 12:00'),
+('2', '3', '2022-3-2 13:00'),
+('2', '4', '2022-3-2 13:00'),
+('2', '5', '2022-3-2 13:00'),
+('2', '6', '2022-3-3 13:00'),
+('3', '5', '2022-3-4 14:30'),
+('3', '6', '2022-3-4 14:30'),
+('3', '7', '2022-3-4 14:30'),
+('3', '8', '2022-3-5 14:30'),
+('4', '7', '2022-3-6 12:10'),
+('4', '8', '2022-3-6 12:10'),
+('4', '9', '2022-3-6 12:10'),
+('4', '10', '2022-3-6 12:10'),
+('5', '9', '2022-3-7 12:20'),
+('5', '10', '2022-3-7 12:20'),
+('5', '1', '2022-3-7 12:20'),
+('5', '2', '2022-3-7 12:20');
+
+select c.username, i.name, p.purchase_time, count(p.id)
+from purchase p inner join customer c on p.customer_id  =c.id
+inner join item i on p.item_id  = i.id 
+group by p.id
+order by p.purchase_time desc 
+limit 5;
+
+call five_recent_purchases (5);
